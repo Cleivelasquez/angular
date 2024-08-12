@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="contenedor">
+  <div>
+    <h1>Bienvenido</h1>
+    <p>Utiliza tus credeciales de acceso para acceder</p>
+  </div>
+    <form [formGroup]="form">
+      <ion-item>
+        <ion-input label="email" labelPlacement="floating" formControlName="email" placeholder="email"></ion-input>
+       </ion-item>
+      <div *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+        <small *ngIf="form.controls['email'].errors?.['required']">el email es obligatorio.</small>
+        <small *ngIf="form.controls['email'].errors?.['email']">
+        el email debe ser un valido.
+        </small>
+      </div>
+      <ion-item>
+        <ion-input label="Password input" labelPlacement="floating" formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <div *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+        <small *ngIf="form.controls['password'].errors?.['required']">La contraseña es obligatoria.</small>
+        <small *ngIf="form.controls['password'].errors?.['pattern']">
+          La contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial.
+        </small>
+      </div>
+    </form>
+    <ion-button [disabled]="form.invalid" (click)="enviarForm()">Ingresar</ion-button>
+    </div>
+</ion-content>

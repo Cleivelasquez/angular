@@ -6,8 +6,15 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    path: 'login',
+    loadComponent: () => import('./login/login/login.page').then((m) => m.LoginPage),
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () => import('./dashboard/dashboard.page').then((m) => m.DashboardPage),
+  },
+  {
+    path: '**', // Wildcard route for unmatched paths
+    redirectTo: '/home',
   },
 ];

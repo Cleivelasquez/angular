@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Dashboard</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="userData.length > 0">
+    <img [src]="userData[0].imagen" alt="User Image" />
+    <ion-card-header>
+      <ion-card-title>{{ userData[0].nombre }} {{ userData[0].apellido }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Nationality: {{ userData[0].nacionalidad }}</p>
+      <p>Description: {{ userData[0].cumpleanios }}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="userData.length === 0">
+    <ion-card-content>
+      User data not available.
+    </ion-card-content>
+  </ion-card>
+</ion-content>
